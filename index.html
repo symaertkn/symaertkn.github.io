@@ -189,18 +189,23 @@
         }
 
         .big-question-label {
+            display: none;
+        }
+
+        .curved-text-svg {
             position: absolute;
-            top: 3%;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: 'Crimson Pro', serif;
-            font-size: clamp(1rem, 2.5vw, 1.5rem);
-            font-weight: 600;
-            color: #475569;
-            text-align: center;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
-            line-height: 1.3;
-            white-space: nowrap;
+        }
+
+        .curved-text-svg text {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            font-weight: 600;
+            fill: #475569;
         }
 
         /* Core PhD component circles - each with different color */
@@ -449,7 +454,7 @@
             z-index: 2000;
             overflow-y: auto;
             transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            padding: 2rem;
+            padding: 3rem 2rem 2rem;
         }
 
         .detail-panel.active {
@@ -484,6 +489,8 @@
             color: var(--primary);
             font-size: 2rem;
             margin-bottom: 1rem;
+            margin-top: 0;
+            padding-top: 1rem;
             padding-right: 3rem;
         }
 
@@ -702,7 +709,6 @@
         <div class="research-universe">
             <!-- Big question circle -->
             <div class="big-question-circle">
-                <div class="big-question-label">Understanding Cognition</div>
             </div>
 
             <!-- Core PhD components - three overlapping circles -->
@@ -715,7 +721,7 @@
             </div>
 
             <div class="core-circle" id="cognitive-dev" onclick="openPanel('cognitive')">
-                <div class="circle-label">Cognitive<br>Development</div>
+                <div class="circle-label">Cognition</div>
             </div>
 
             <!-- PhD center - just text at the intersection -->
@@ -725,15 +731,15 @@
 
             <!-- Small supporting circles - previous and non-PhD projects -->
             <div class="support-circle" id="psych-ling" onclick="openPanel('psych')">
-                <div class="circle-label">Psychology &<br>Linguistics</div>
+                <div class="circle-label">Psycholinguistics<br>& Eye Tracking</div>
             </div>
 
             <div class="support-circle" id="neuro" onclick="openPanel('neuro')">
-                <div class="circle-label">Neuroscience &<br>Neural Nets</div>
+                <div class="circle-label">Neuroscience<br>& AI</div>
             </div>
 
             <div class="support-circle" id="exp-cognition" onclick="openPanel('experimental')">
-                <div class="circle-label">Experimental<br>Cognition</div>
+                <div class="circle-label">Working<br>Memory</div>
             </div>
         </div>
     </div>
@@ -990,7 +996,7 @@
                 <p>Affiliated with the <strong>EdAptiv Lab</strong> and <strong>Amsterdam Mathematical Psychology Lab (AMPL)</strong> within the Psychological Methods Group at University of Amsterdam.</p>
             `,
             psych: `
-                <h2>Psychology & Linguistics</h2>
+                <h2>Psycholinguistics & Eye Tracking</h2>
                 <p><strong>Spatial Semantics & Eye Tracking</strong></p>
                 <p>My work in psycholinguistics explores how spatial language is processed and understood, using eye-tracking methodology to examine the cognitive mechanisms underlying spatial term comprehension in Turkish.</p>
                 
@@ -1043,7 +1049,7 @@
                 </div>
             `,
             experimental: `
-                <h2>Experimental Cognition</h2>
+                <h2>Working Memory</h2>
                 <p><strong>Working Memory Mechanisms & Rapid Forgetting</strong></p>
                 <p>I'm currently involved in a collaborative research project examining the mechanisms underlying rapid forgetting in working memory, particularly in the attribute amnesia paradigm.</p>
                 
@@ -1068,7 +1074,7 @@
                 <p>Currently gathering experimental data for this collaborative project investigating working memory mechanisms in adults.</p>
             `,
             neuro: `
-                <h2>Neuroscience & Neural Networks</h2>
+                <h2>Neuroscience & AI</h2>
                 <p><strong>Bridging Brain Signals and Computational Models</strong></p>
                 <p>My work in neuroscience combines electrocorticography (ECoG) recordings with deep learning approaches to understand and decode cognitive and motor processes from neural signals.</p>
                 
