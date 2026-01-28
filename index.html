@@ -212,7 +212,7 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
             background: rgba(255, 255, 255, 0.7);
             border: 3px solid;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
@@ -225,8 +225,17 @@
         .core-circle:hover {
             opacity: 1;
             transform: scale(1.05);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
             z-index: 10;
+        }
+
+        @keyframes subtlePulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
         }
 
         /* Adaptive Data - left - Soft Blue */
@@ -277,7 +286,7 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
             background: rgba(255, 255, 255, 0.9);
             border: 2px solid var(--secondary);
             box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
@@ -287,8 +296,8 @@
         }
 
         .support-circle:hover {
-            transform: scale(1.08);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
             z-index: 10;
         }
 
@@ -327,10 +336,25 @@
             cursor: pointer;
             transition: all 0.3s ease;
             pointer-events: all;
+            padding: 0.5rem;
+            border-radius: 50%;
         }
 
         .phd-center:hover {
-            transform: translate(-50%, -50%) scale(1.1);
+            transform: translate(-50%, -50%) scale(1.15);
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 20px 8px rgba(15, 118, 110, 0.2);
+        }
+
+        @keyframes gentlePulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                box-shadow: 0 0 0 0 rgba(15, 118, 110, 0.4);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.05);
+                box-shadow: 0 0 20px 8px rgba(15, 118, 110, 0.2);
+            }
         }
 
         .phd-center-label {
@@ -672,7 +696,7 @@
                 My work spans from neural signals to adaptive learning systems, unified by a vision of making education more responsive 
                 to individual cognitive profiles.
             </p>
-            <p class="explore-hint">↓ Explore my interdisciplinary research ↓</p>
+            <p class="explore-hint">↓ Click on any circle to explore my interdisciplinary research ↓</p>
         </div>
 
         <div class="research-universe">
@@ -714,10 +738,10 @@
         </div>
     </div>
 
-    <div class="overlay" onclick="closePanel()"></div>
+    <div class="overlay" onclick="event.preventDefault(); event.stopPropagation(); closePanel(); return false;"></div>
 
     <div class="detail-panel" id="panel">
-        <button class="close-btn" onclick="closePanel()">×</button>
+        <button class="close-btn" onclick="event.preventDefault(); event.stopPropagation(); closePanel(); return false;">×</button>
         <div class="panel-content" id="panel-content">
             <!-- Content will be dynamically loaded here -->
         </div>
@@ -1166,6 +1190,9 @@
             document.querySelectorAll('.research-circle').forEach(circle => {
                 circle.classList.remove('active');
             });
+            
+            // Prevent any default behavior
+            return false;
         }
 
         // Add some connection lines between circles on load
