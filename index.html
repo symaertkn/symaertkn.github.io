@@ -72,6 +72,11 @@
             position: relative;
         }
 
+        nav a.active {
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
         nav a::after {
             content: '';
             position: absolute;
@@ -81,6 +86,10 @@
             height: 2px;
             background: var(--secondary);
             transition: width 0.3s ease;
+        }
+
+        nav a.active::after {
+            width: 100%;
         }
 
         nav a:hover::after {
@@ -620,16 +629,65 @@
             0%, 100% { opacity: 0.3; }
             50% { opacity: 0.6; }
         }
+
+        /* Styles for other sections */
+        .page-section {
+            display: none;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        .page-section h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .page-section h4 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-section p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .page-section ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        .page-section img {
+            max-width: 100%;
+            height: auto;
+            margin: 1rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
     </style>
 </head>
 <body>
     <nav>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="research.html">Research & Teaching</a></li>
-            <li><a href="publications.html">Publications</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#" data-tab="home" class="nav-link active">Home</a></li>
+            <li><a href="#" data-tab="research" class="nav-link">Research & Teaching</a></li>
+            <li><a href="#" data-tab="publications" class="nav-link">Publications</a></li>
+            <li><a href="#" data-tab="blog" class="nav-link">Blog</a></li>
+            <li><a href="#" data-tab="contact" class="nav-link">Contact</a></li>
         </ul>
     </nav>
 
@@ -692,6 +750,125 @@
             <!-- Content will be dynamically loaded here -->
         </div>
     </div>
+
+    <!-- Other Page Sections -->
+    <section id="research" class="page-section">
+        <h3>Research</h3>
+        <p>
+            My research lies at the intersection of cognitive development, educational technology, and statistical modeling.
+            I investigate how children learn and think, with a particular focus on combining theories of (mathematical) cognition
+            with Bayesian computational models and large-scale behavioral data. Using data from Prowise Learn, an adaptive online
+            learning platform used by Dutch primary schools, I explore how cognitive skills can inform
+            and improve adaptive learning systems. My work aims to bridge empirical psychology with modern statistical tools to better
+            understand and support learning processes in children.
+        </p>
+        <p>
+            Currently, I lead two projects that reflect this goal. The first centers on working memory, where I examine how performance
+            on serial recall tasks develops across childhood. The second project focuses on clock reading, a cognitively demanding skill
+            that draws on time perception, language, math, and memory. Both projects aim to contribute to theoretical understanding while offering
+            insights that can improve adaptive educational technologies.
+        </p>
+
+        <h4>Courses Taught</h4>
+        <ul>
+            <li>2023–2024: Programming in Psychological Science, Supervision of Bachelor's Projects</li>
+            <li>2024–2025: Programming in Psychological Science</li>
+        </ul>
+    </section>
+
+    <section id="publications" class="page-section">
+        <h3>Publications</h3>
+        <p>
+            Ertekin, Ş. N., Hofman, A. D., van der Maas, H., Matzke, D., Streitberger, C., & Haaf, J. M. (2025). 
+            <i>Extending empirical benchmarks of working memory to children: Insights from an adaptive learning environment</i>. 
+            <strong>Developmental Psychology</strong>. 
+            <a href="https://doi.org/10.1037/dev0001992" target="_blank">https://doi.org/10.1037/dev0001992</a>
+        </p>
+        <p>
+            Acarturk, C., & Ertekin, S. (2024). 
+            <i>Spatial Term Variety Reflected in Eye Movements on Visual Scenes</i>. 
+            In <strong>Proceedings of the Annual Meeting of the Cognitive Science Society, 46</strong>. 
+            <a href="https://escholarship.org/uc/item/71v0m351" target="_blank">https://escholarship.org/uc/item/71v0m351</a>
+        </p>
+        <p>
+            Ertekin, Ş. N. (2021). <i>An investigation of Turkish static spatial semantics in terms of lexical variety: an eye tracking study</i> (Master's thesis, Middle East Technical University).
+        </p>
+
+        <h4>Posters</h4>
+        <ul>
+            <li>
+                Ertekin, Ş. N., Ye, L., Hofman, A. D., & Haaf, J. M. (2024, November 21–24).
+                <i>Playing with Cognition: Investigating How Children Learn to Tell Time Within a Large-Scale Online Learning Environment</i>.
+                Poster presented at the <strong>Psychonomic Society 65th Annual Meeting</strong>, New York City.
+            </li>
+            <li>
+                Ertekin, Ş. N., Hofman, A. D., & Haaf, J. M.
+                <i>Extending Working Memory Benchmarks to Children Using a Large-Scale Online Adaptive Learning Environment</i>.
+                Poster available via <a href="https://mathpsych.org/presentation/1684" target="_blank">mathpsych.org</a>.
+            </li>
+            <li>
+                Ertekin, Ş. N., Hofman, A. D., & Haaf, J. M. (2024, June 25–27).
+                <i>Playing with Memory: Benchmarks in Children's Working Memory within a Large-Scale Online Learning Environment</i>.
+                Poster presented at the <strong>International Conference on Working Memory (ICWM)</strong>, Leeds, UK.
+            </li>
+            <li>
+                Ertekin, Ş. N., Hofman, A. D., & Haaf, J. M. (2023, July).
+                <i>Playing with Memory: Working Memory Development in Primary School</i>.
+                Poster presented at <strong>MathPsych/ICCM/EMPG 2023</strong>. 
+                Abstract available via <a href="https://mathpsych.org/presentation/1133" target="_blank">mathpsych.org</a>.
+            </li>
+            <li>
+                Yilmaz, F., Amrani El Yaakoubi, N., Ertekin, Ş. N., Kotoyants, N., Wodeyar, A., & Keogh, C. (2022, July 9–13).
+                <i>Investigating Neural Signatures of Working Memory in Frontoparietal Electrocorticography</i>.
+                Poster presented at the <strong>FENS Forum</strong>, Paris, France.
+            </li>
+            <li>
+                Ertekin, Ş. N., & Acartürk, C. (2021, September 7–8).
+                <i>Türkçede Statik Uzamsal Dil Semantiğinin Kelime Çeşitliliği Açısından İncelenmesi: Bir Göz Hareketleri Takip Çalışması</i>.
+                Poster presented at the <strong>Experimental-Cognitive Psychology Symposium</strong>, Ankara, Turkey.
+                <a href="https://web4.bilkent.edu.tr/deneyselbilissel2021/" target="_blank">[link]</a>
+            </li>
+        </ul>
+    </section>
+
+    <section id="blog" class="page-section">
+        <h3>Blog</h3>
+
+        <article>
+            <h4>Woerden Writing Retreat (July 7–11, 2025)</h4>
+            <p>
+                We spent a few days in a farm close to the quiet town of Woerden for a collaborative writing retreat. It was such a refreshing and productive experience! 
+                The time away from the city helped us focus, plan, and make real progress on our ongoing research projects. 
+                Beyond the writing, we also had great conversations and dinner and lunches as a group.
+            </p>
+            <p>Here's a small glimpse from the retreat:</p>
+            <img src="x.jpeg" alt="Woerden retreat" style="width: 400px;">
+            <img src="y.jpeg" alt="Woerden retreat" style="width: 400px;">
+        </article>
+
+        <article>
+            <h4>2024 Annual Psychonomic Society Meeting</h4>
+            <p>
+                I had a wonderful time at the 2024 Annual Psychonomic Society Meeting! 
+                It was a nice conference with lots of interesting talks and great people to meet. I presented two posters there; one on working memory 
+                and another on clock reading. I was also honored to receive the PS 2024 J. Frank Yates Student Travel Award, which made the experience even more special.
+                The conference atmosphere was relaxed and inspiring, and it was great to share my research and get feedback from others in the field. 
+            </p>
+            <p>Here's a small glimpse from the conference:</p>
+            <img src="PS1.jpeg" alt="Psychonomic Society 2024" style="width: 400px;">
+            <img src="PS2.jpeg" alt="Psychonomic Society 2024" style="width: 400px;">
+            <img src="PS3.jpeg" alt="Psychonomic Society 2024" style="width: 400px;">
+        </article>
+    </section>
+
+    <section id="contact" class="page-section">
+        <h3>Contact</h3>
+        <p>Email:<br /><a href="mailto:s.n.ertekin@uva.nl">s.n.ertekin@uva.nl</a></p>
+        <p><a href="https://www.linkedin.com/in/%C5%9feyma-nur-ertekin-428021141/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+        <p><a href="https://www.edaptiv.org/" target="_blank" rel="noopener noreferrer">EdAptive Lab</a></p>
+        <p><a href="https://www.ampl-psych.com/" target="_blank" rel="noopener noreferrer">AMPL Lab</a></p>
+        <p><strong>Office Address:</strong><br>Nieuwe Achtergracht 129-B, 1018 WS Amsterdam, Room GS.13</p>
+    </section>
 
     <script>
         const panelContent = {
@@ -1033,6 +1210,31 @@
             if (e.key === 'Escape') {
                 closePanel();
             }
+        });
+
+        // Tab switching functionality
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetTab = link.getAttribute('data-tab');
+                
+                // Update nav active state
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                
+                // Show/hide sections
+                if (targetTab === 'home') {
+                    document.querySelector('.hero').style.display = 'flex';
+                    document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+                } else {
+                    document.querySelector('.hero').style.display = 'none';
+                    document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+                    document.getElementById(targetTab).classList.add('active');
+                }
+                
+                // Close any open panels
+                closePanel();
+            });
         });
     </script>
 </body>
