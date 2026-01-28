@@ -1,285 +1,1039 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Şeyma Nur Ertekin</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: system-ui, sans-serif;
-      background: #fafafa;
-      color: #222;
-      display: flex;
-      flex-direction: row;
-      min-height: 100vh;
-      overflow-y: auto;
-      gap: 1.5rem;
-}
-    a {
-      color: #2a6b4f;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-      color: #195434;
-    }
-    nav {
-      width: 220px;
-      background: #f0f4f1;
-      border-right: 1px solid #c4d0c9;
-      display: flex;
-      flex-direction: column;
-      padding: 1rem;
-      gap: 0.5rem;
-      overflow-y: auto;
-      flex-shrink: 0;
-    }
-    nav button {
-      background: none;
-      border: none;
-      padding: 0.7rem 1rem;
-      font-size: 1rem;
-      text-align: left;
-      cursor: pointer;
-      border-left: 4px solid transparent;
-      color: #556b5a;
-      transition: border-color 0.3s, color 0.3s, background-color 0.3s;
-      border-radius: 3px;
-    }
-    nav button.active {
-      border-left-color: #2a6b4f;
-      color: #2a6b4f;
-      font-weight: 700;
-      background-color: #d7e6da;
-    }
-    nav button:hover:not(.active) {
-      background-color: #e7f0e8;
-    }
-    main {
-      flex-grow: 1;
-      padding: 2rem 2.5rem;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-    }
-    header {
-      margin-bottom: 1rem;
-      flex-shrink: 0;
-    }
-    header h1 {
-      margin: 0 0 0.25rem 0;
-      font-size: 2rem;
-      font-weight: 700;
-      color: #2a6b4f;
-    }
-    header h2 {
-      margin: 0;
-      font-weight: 400;
-      color: #556b5a;
-      font-size: 1.1rem;
-    }
-    .content-wrapper { flex-grow: 1; overflow-y: auto; }
-    section { display: none; padding-bottom: 2rem; }
-    section.active { display: block; }
-    h3.subsection {
-      margin-top: 1.5rem;
-      font-style: italic;
-      color: #556b5a;
-      font-weight: 600;
-    }
-    .contact-links p { margin: 0.5rem 0; }
-    @media (max-width: 768px) {
-      body { flex-direction: column; height: auto; }
-      nav {
-        flex-direction: row;
-        flex-wrap: wrap;
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid #c4d0c9;
-        padding: 0.5rem;
-        gap: 0.5rem;
-      }
-      nav button {
-        flex: 1 1 auto;
-        border-left: none;
-        border-bottom: 3px solid transparent;
-        text-align: center;
-        font-size: 0.95rem;
-        padding: 0.6rem;
-      }
-      nav button.active {
-        border-bottom: 3px solid #2a6b4f;
-      }
-      main { padding: 1.5rem; height: auto; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Şeyma Nur Ertekin - PhD Candidate in Psychological Methods</title>
+    <meta name="description" content="Şeyma Nur Ertekin - PhD Candidate researching working memory development, cognitive modeling, and adaptive learning at University of Amsterdam">
+    <meta name="keywords" content="Şeyma Nur Ertekin, cognitive development, working memory, Bayesian modeling, adaptive learning, computational psychology">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2d5a7b;
+            --secondary: #c67b5c;
+            --accent: #e8b4a8;
+            --dark: #1a2332;
+            --light: #f5f1ed;
+            --text: #3a3a3a;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: linear-gradient(135deg, #f5f1ed 0%, #e8dfd6 100%);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 3000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 2rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .tagline {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: var(--secondary);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .vision-statement {
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            color: var(--text);
+            max-width: 700px;
+            margin: 0 auto 1rem;
+            line-height: 1.8;
+        }
+
+        .explore-hint {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            font-style: italic;
+            margin-top: 2rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        .research-universe {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            height: 750px;
+            margin: 0 auto;
+            animation: fadeIn 1s ease-out 0.4s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Big question circle */
+        .big-question-circle {
+            position: absolute;
+            width: 720px;
+            height: 720px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border: 3px dashed #64748b;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(100, 116, 139, 0.02), rgba(100, 116, 139, 0.06));
+            pointer-events: none;
+        }
+
+        .big-question-label {
+            position: absolute;
+            top: 3%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #475569;
+            text-align: center;
+            pointer-events: none;
+            line-height: 1.3;
+        }
+
+        /* Core PhD component circles - each with different color */
+        .core-circle {
+            position: absolute;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            background: rgba(255, 255, 255, 0.7);
+            border: 3px solid;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            pointer-events: all;
+            opacity: 0.85;
+        }
+
+        .core-circle:hover {
+            opacity: 1;
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+        }
+
+        /* Adaptive Data - left - Soft Blue */
+        #adaptive-data {
+            width: 210px;
+            height: 210px;
+            left: 25%;
+            top: 50%;
+            transform: translateY(-50%);
+            border-color: #7dd3fc;
+            background: linear-gradient(135deg, rgba(125, 211, 252, 0.1), rgba(125, 211, 252, 0.18));
+        }
+
+        #adaptive-data .circle-label {
+            color: #0284c7;
+        }
+
+        /* Bayesian Methods - right - Soft Rose */
+        #bayesian {
+            width: 210px;
+            height: 210px;
+            right: 25%;
+            top: 50%;
+            transform: translateY(-50%);
+            border-color: #fda4af;
+            background: linear-gradient(135deg, rgba(253, 164, 175, 0.1), rgba(253, 164, 175, 0.18));
+        }
+
+        #bayesian .circle-label {
+            color: #e11d48;
+        }
+
+        /* Cognitive Development - top - Soft Mint */
+        #cognitive-dev {
+            width: 210px;
+            height: 210px;
+            left: 50%;
+            top: 23%;
+            transform: translateX(-50%);
+            border-color: #86efac;
+            background: linear-gradient(135deg, rgba(134, 239, 172, 0.1), rgba(134, 239, 172, 0.18));
+        }
+
+        #cognitive-dev .circle-label {
+            color: #16a34a;
+        }
+
+        /* Small supporting circles at the bottom */
+        .support-circle {
+            position: absolute;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid var(--secondary);
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+            pointer-events: all;
+            width: 110px;
+            height: 110px;
+        }
+
+        .support-circle:hover {
+            transform: scale(1.08);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+        }
+
+        .support-circle .circle-label {
+            font-size: 0.8rem;
+            color: var(--secondary);
+            position: static;
+            transform: none;
+        }
+
+        /* Position small circles at bottom - aligned with outer circle outline */
+        #psych-ling {
+            left: 18%;
+            bottom: 15%;
+        }
+
+        #neuro {
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 6%;
+        }
+
+        #exp-cognition {
+            right: 18%;
+            bottom: 15%;
+        }
+
+        /* PhD center label - just text at intersection */
+        .phd-center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 15;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            pointer-events: all;
+        }
+
+        .phd-center:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .phd-center-label {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            pointer-events: none;
+            line-height: 1.2;
+            color: #0f766e;
+            text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Supporting circles - smaller, different color */
+        .research-circle {
+            position: absolute;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            background: rgba(255, 255, 255, 0.95);
+            border: 3px solid var(--secondary);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            pointer-events: all;
+        }
+
+        .research-circle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+
+        .research-circle.active {
+            transform: scale(1.15);
+            z-index: 100;
+        }
+
+        .circle-label {
+            font-family: 'Crimson Pro', serif;
+            font-weight: 600;
+            font-size: 1rem;
+            text-align: center;
+            padding: 0 1rem;
+            pointer-events: none;
+            color: var(--primary);
+            position: absolute;
+        }
+
+        /* Position labels toward the outer edges of each circle */
+        #adaptive-data .circle-label {
+            left: 12%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        #bayesian .circle-label {
+            right: 12%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        #cognitive-dev .circle-label {
+            top: 18%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .circle-sublabel {
+            font-size: 0.7rem;
+            opacity: 0.7;
+            margin-top: 0.3rem;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        @keyframes pulse-line {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        .detail-panel {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 500px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.2);
+            z-index: 2000;
+            overflow-y: auto;
+            transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            padding: 2rem;
+        }
+
+        .detail-panel.active {
+            right: 0;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--text);
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: var(--light);
+            transform: rotate(90deg);
+        }
+
+        .panel-content h2 {
+            font-family: 'Crimson Pro', serif;
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            padding-right: 3rem;
+        }
+
+        .panel-content h3 {
+            color: var(--secondary);
+            font-size: 1.3rem;
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .panel-content p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .publication-item, .project-item {
+            background: var(--light);
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+            transition: all 0.3s ease;
+        }
+
+        .publication-item:hover, .project-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        .publication-item strong, .project-item strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-item a, .project-item a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .publication-item a:hover, .project-item a:hover {
+            text-decoration: underline;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1500;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        @media (max-width: 768px) {
+            .research-universe {
+                height: 720px;
+            }
+
+            .big-question-circle {
+                width: 550px;
+                height: 550px;
+            }
+
+            .big-question-label {
+                font-size: 1.3rem;
+                top: 4%;
+            }
+
+            .core-circle {
+                width: 170px;
+                height: 170px;
+            }
+
+            #adaptive-data {
+                left: 24%;
+            }
+
+            #bayesian {
+                right: 24%;
+            }
+
+            #cognitive-dev {
+                top: 25%;
+            }
+
+            .phd-center-label {
+                font-size: 1.1rem;
+            }
+
+            .support-circle {
+                width: 85px;
+                height: 85px;
+            }
+
+            .support-circle .circle-label {
+                font-size: 0.65rem;
+            }
+
+            #psych-ling {
+                left: 15%;
+                bottom: 12%;
+            }
+
+            #neuro {
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 5%;
+            }
+
+            #exp-cognition {
+                right: 15%;
+                bottom: 12%;
+            }
+
+            .circle-label {
+                font-size: 0.9rem;
+            }
+
+            .detail-panel {
+                max-width: 100%;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+        }
+
+        .connection-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(to right, transparent, rgba(45, 90, 123, 0.2), transparent);
+            transform-origin: left center;
+            pointer-events: none;
+            z-index: 1;
+            animation: pulse-line 3s ease-in-out infinite;
+        }
+
+        .connection-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .connect-line {
+            animation: pulse-line 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse-line {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+    </style>
 </head>
 <body>
-  <nav role="tablist" aria-label="Main navigation" id="main-nav">
-    <button class="active" role="tab" aria-selected="true" aria-controls="home" id="tab-home">Home</button>
-    <button role="tab" aria-selected="false" aria-controls="research" id="tab-research">Research & Teaching</button>
-    <button role="tab" aria-selected="false" aria-controls="publications" id="tab-publications">Publications</button>
-    <button role="tab" aria-selected="false" aria-controls="blog" id="tab-blog">Blog</button>
-    <button role="tab" aria-selected="false" aria-controls="contact" id="tab-contact">Contact</button>
-  </nav>
-
-  <main>
-    <header>
-      <h1>Şeyma Nur Ertekin</h1>
-      <h2>PhD Candidate, Psychological Methods<br>University of Amsterdam</h2>
-    </header>
-
-    <div class="content-wrapper">
-      <section id="home" class="active">
-        <h3>About Me</h3>
-        <p>
-          I am a Ph.D. candidate focused on developing computational models of child cognition,
-          such as working memory in an adaptive online learning environment, employing a Bayesian approach.
-          I am affiliated with the <strong>EdAptiv Lab</strong> and the <strong>Amsterdam Mathematical Psychology Lab (AMPL)</strong>
-          within the Psychological Methods Group.
-        </p>
-      </section>
-
-      <section id="research">
-        <h3>Research</h3>
-        <p>
-          My research lies at the intersection of cognitive development, educational technology, and statistical modeling.
-          I investigate how children learn and think, with a particular focus on combining theories of (mathematical) cognition
-          with Bayesian computational models and large-scale behavioral data. Using data from Prowise Learn, an adaptive online
-          learning platform used by Dutch primary schools, I explore how cognitive skills can inform
-          and improve adaptive learning systems. My work aims to bridge empirical psychology with modern statistical tools to better
-          understand and support learning processes in children.
-        </p>
-        <p>
-          Currently, I lead two projects that reflect this goal. The first centers on working memory, where I examine how performance
-          on serial recall tasks develops across childhood. The second project focuses on clock reading, a cognitively demanding skill
-          that draws on time perception, language, math, and memory. Both projects aim to contribute to theoretical understanding while offering
-          insights that can improve adaptive educational technologies.
-        </p>
-
-        <h3 class="subsection">Courses Taught</h3>
+    <nav>
         <ul>
-          <li>2023–2024: Programming in Psychological Science, Supervision of Bachelor's Projects</li>
-          <li>2024–2025: Programming in Psychological Science</li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="research.html">Research & Teaching</a></li>
+            <li><a href="publications.html">Publications</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
-      </section>
+    </nav>
 
-      <section id="publications">
-        <h3>Publications</h3>
-        <p>
-          Ertekin, Ş. N., Hofman, A. D., van der Maas, H., Matzke, D., Streitberger, C., & Haaf, J. M. (2025). 
-          <i>Extending empirical benchmarks of working memory to children: Insights from an adaptive learning environment</i>. 
-          <strong>Developmental Psychology</strong>. 
-          <a href="https://doi.org/10.1037/dev0001992">https://doi.org/10.1037/dev0001992</a>
-        </p>
-        <p>
-          Acarturk, C., & Ertekin, S. (2024). 
-          <i>Spatial Term Variety Reflected in Eye Movements on Visual Scenes</i>. 
-          In <strong>Proceedings of the Annual Meeting of the Cognitive Science Society, 46</strong>. 
-          <a href="https://escholarship.org/uc/item/71v0m351">https://escholarship.org/uc/item/71v0m351</a>
-        </p>
-        <p>
-          Ertekin, Ş. N. (2021). <i>An investigation of Turkish static spatial semantics in terms of lexical variety: an eye tracking study</i> (Master's thesis, Middle East Technical University).
-        </p>
-        <h3 class="subsection">Posters</h3>
-<ul>
-  <li>
-    Ertekin, Ş. N., Ye, L., Hofman, A. D., & Haaf, J. M. (2024, November 21–24).
-    <i>Playing with Cognition: Investigating How Children Learn to Tell Time Within a Large-Scale Online Learning Environment</i>.
-    Poster presented at the <strong>Psychonomic Society 65th Annual Meeting</strong>, New York City.
-  </li>
-  <li>
-    Ertekin, Ş. N., Hofman, A. D., & Haaf, J. M.
-    <i>Extending Working Memory Benchmarks to Children Using a Large-Scale Online Adaptive Learning Environment</i>.
-    Poster available via <a href="https://mathpsych.org/presentation/1684" target="_blank">mathpsych.org</a>.
-  </li>
-  <li>
-    Ertekin, Ş. N., Hofman, A. D., & Haaf, J. M. (2024, June 25–27).
-    <i>Playing with Memory: Benchmarks in Children's Working Memory within a Large-Scale Online Learning Environment</i>.
-    Poster presented at the <strong>International Conference on Working Memory (ICWM)</strong>, Leeds, UK.
-  </li>
-  <li>
-    Ertekin, Ş. N., Hofman, A. D., & Haaf, J. M. (2023, July).
-    <i>Playing with Memory: Working Memory Development in Primary School</i>.
-    Poster presented at <strong>MathPsych/ICCM/EMPG 2023</strong>. 
-    Abstract available via <a href="https://mathpsych.org/presentation/1133" target="_blank">mathpsych.org</a>.
-  </li>
-  <li>
-    Yilmaz, F., Amrani El Yaakoubi, N., Ertekin, Ş. N., Kotoyants, N., Wodeyar, A., & Keogh, C. (2022, July 9–13).
-    <i>Investigating Neural Signatures of Working Memory in Frontoparietal Electrocorticography</i>.
-    Poster presented at the <strong>FENS Forum</strong>, Paris, France.
-  </li>
-  <li>
-    Ertekin, Ş. N., & Acartürk, C. (2021, September 7–8).
-    <i>Türkçede Statik Uzamsal Dil Semantiğinin Kelime Çeşitliliği Açısından İncelenmesi: Bir Göz Hareketleri Takip Çalışması</i>.
-    Poster presented at the <strong>Experimental-Cognitive Psychology Symposium</strong>, Ankara, Turkey.
-    <a href="https://web4.bilkent.edu.tr/deneyselbilissel2021/" target="_blank">[link]</a>
-  </li>
-</ul>
-
-      </section>
-
-      <section id="blog" role="tabpanel" aria-labelledby="tab-blog" tabindex="0">
-  <h3>Blog</h3>
-
-  <article>
-    <h4>Woerden Writing Retreat (July 7–11, 2025)</h4>
-    <p>
-      We spent a few days in a farm close to the quiet town of Woerden for a collaborative writing retreat. It was such a refreshing and productive experience! 
-      The time away from the city helped us focus, plan, and make real progress on our ongoing research projects. 
-      Beyond the writing, we also had great conversations and dinner and lunches as a group.
-    </p>
-    <p>Here's a small glimpse from the retreat:</p>
-    <img src="x.jpeg" style="width: 400px; margin: 1rem 0; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
-    <img src="y.jpeg" style="width: 400px; margin: 1rem 0; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
-
-  <article>
-    <h4>2024 Annual Psychonomic Society Meeting </h4>
-    <p>
-      I had a wonderful time at the 2024 Annual Psychonomic Society Meeting! 
-      It was a nice conference with lots of interesting talks and great people to meet.I presented two posters there; one on </bold>working memory</bold> 
-    and another on </bold>clock reading</bold>. I was also honored to receive the PS 2024 J. Frank Yates Student Travel Award, which made the experience even more special.
-    The conference atmosphere was relaxed and inspiring, and it was great to share my research and get feedback from others in the field. 
-    </p>
-    <p>Here's a small glimpse from the conference:</p>
-    <img src="PS1.jpeg" style="width: 400px; margin: 1rem 0; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
-    <img src="PS2.jpeg" style="width: 400px; margin: 1rem 0; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
-    <img src="PS3.jpeg" style="width: 400px; margin: 1rem 0; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
-
-
-</section>
-
-
-      <section id="contact">
-        <h3>Contact</h3>
-        <div class="contact-links">
-          <p>Email:<br /><a href="mailto:s.n.ertekin@uva.nl">s.n.ertekin@uva.nl</a></p>
-          <p><a href="https://www.linkedin.com/in/%C5%9feyma-nur-ertekin-428021141/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
-          <p><a href="https://www.edaptiv.org/" target="_blank" rel="noopener noreferrer">EdAptive Lab</a></p>
-          <p><a href="https://www.ampl-psych.com/" target="_blank" rel="noopener noreferrer">AMPL Lab</a></p>
-          <p><strong>Office Address:</strong><br>Nieuwe Achtergracht 129-B, 1018 WS Amsterdam, Room GS.13</p>
+    <div class="hero" id="home">
+        <div class="hero-content">
+            <h1>Şeyma Nur Ertekin</h1>
+            <div class="tagline">PhD Candidate in Psychological Methods</div>
+            <p class="vision-statement">
+                I bridge cognitive development, neuroscience, and computational modeling to understand how children learn and think. 
+                My work spans from neural signals to adaptive learning systems, unified by a vision of making education more responsive 
+                to individual cognitive profiles.
+            </p>
+            <p class="explore-hint">↓ Explore my interdisciplinary research ↓</p>
         </div>
-      </section>
-    </div>
-  </main>
 
-  <script>
-    const tabs = document.querySelectorAll('nav button');
-    const sections = document.querySelectorAll('main section');
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => {
-          t.classList.remove('active');
-          t.setAttribute('aria-selected', 'false');
+        <div class="research-universe">
+            <!-- Big question circle -->
+            <div class="big-question-circle">
+                <div class="big-question-label">Understanding Cognition</div>
+            </div>
+
+            <!-- Core PhD components - three overlapping circles -->
+            <div class="core-circle" id="adaptive-data" onclick="openPanel('adaptive')">
+                <div class="circle-label">Adaptive<br>Learning<br>Data</div>
+            </div>
+
+            <div class="core-circle" id="bayesian" onclick="openPanel('bayesian')">
+                <div class="circle-label">Bayesian<br>Methods</div>
+            </div>
+
+            <div class="core-circle" id="cognitive-dev" onclick="openPanel('cognitive')">
+                <div class="circle-label">Cognitive<br>Development</div>
+            </div>
+
+            <!-- PhD center - just text at the intersection -->
+            <div class="phd-center" onclick="openPanel('phd')">
+                <div class="phd-center-label">PhD<br>Focus</div>
+            </div>
+
+            <!-- Small supporting circles - previous and non-PhD projects -->
+            <div class="support-circle" id="psych-ling" onclick="openPanel('psych')">
+                <div class="circle-label">Psychology &<br>Linguistics</div>
+            </div>
+
+            <div class="support-circle" id="neuro" onclick="openPanel('neuro')">
+                <div class="circle-label">Neuroscience &<br>Neural Nets</div>
+            </div>
+
+            <div class="support-circle" id="exp-cognition" onclick="openPanel('experimental')">
+                <div class="circle-label">Experimental<br>Cognition</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" onclick="closePanel()"></div>
+
+    <div class="detail-panel" id="panel">
+        <button class="close-btn" onclick="closePanel()">×</button>
+        <div class="panel-content" id="panel-content">
+            <!-- Content will be dynamically loaded here -->
+        </div>
+    </div>
+
+    <script>
+        const panelContent = {
+            phd: `
+                <h2>My PhD Research</h2>
+                <p><strong>Using Adaptive Learning Data and Bayesian Methods to Study Cognitive Development</strong></p>
+                <p>My doctoral research combines large-scale adaptive learning data with Bayesian computational modeling to understand how children's cognitive skills develop. The thesis consists of four interconnected projects:</p>
+                
+                <h3>Project 1: Working Memory Benchmarks (Published)</h3>
+                <div class="publication-item">
+                    <strong>Extending empirical benchmarks of working memory to children: Insights from an adaptive learning environment</strong>
+                    <p>Ertekin, Ş. N., Hofman, A. D., van der Maas, H., Matzke, D., Streitberger, C., & Haaf, J. M. (2025). <em>Developmental Psychology</em>.</p>
+                    <a href="https://doi.org/10.1037/dev0001992" target="_blank">View Publication →</a>
+                    <p style="margin-top: 0.5rem;">This paper establishes empirical benchmarks for working memory in children using data from an adaptive learning platform, extending classic WM findings to developmental populations.</p>
+                </div>
+
+                <h3>Project 2: Clock Reading Development</h3>
+                <div class="project-item">
+                    <strong>How children learn to tell time and its cognitive correlates</strong>
+                    <p>Examining clock reading as a complex cognitive skill that draws on time perception, language, math, and memory. This project explores developmental patterns and how clock reading relates to other cognitive domains.</p>
+                    <p><em>Poster presented at Psychonomic Society 2024, NYC</em></p>
+                </div>
+
+                <h3>Project 3: Working Memory Development (Cross-Sectional & Longitudinal)</h3>
+                <div class="project-item">
+                    <strong>Developmental trajectories of working memory in primary school</strong>
+                    <p>Analyzing both cross-sectional patterns across age groups and longitudinal growth trajectories of individual children using large-scale adaptive learning data. This project maps how working memory capacity develops and varies across childhood.</p>
+                    <p><em>Posters at ICWM 2024 (Leeds) and MathPsych 2023</em></p>
+                    <a href="https://mathpsych.org/presentation/1684" target="_blank">View Poster →</a>
+                </div>
+
+                <h3>Project 4: Working Memory × Math Domains</h3>
+                <div class="project-item">
+                    <strong>Interactions between working memory and mathematical cognition</strong>
+                    <p>Investigating how working memory capacity relates to and supports learning across different mathematical domains in primary school children, using adaptive learning data to understand these cognitive interactions.</p>
+                </div>
+
+                <h3>Labs & Affiliation</h3>
+                <p>This work is conducted at the University of Amsterdam within the <strong>Psychological Methods Group</strong>, affiliated with both the <strong>EdAptiv Lab</strong> (adaptive learning research) and the <strong>Amsterdam Mathematical Psychology Lab (AMPL)</strong> (computational modeling).</p>
+            `,
+            cognitive: `
+                <h2>Cognitive Development</h2>
+                <p><strong>Understanding How Children Learn and Think</strong></p>
+                <p>My PhD focuses on cognitive development in childhood, particularly working memory and its role in learning. I study how cognitive skills develop and interact with each other in real educational contexts.</p>
+                
+                <h3>Working Memory Development</h3>
+                <div class="project-item">
+                    <strong>Published Paper: Empirical Benchmarks</strong>
+                    <p>Ertekin, Ş. N., Hofman, A. D., van der Maas, H., Matzke, D., Streitberger, C., & Haaf, J. M. (2025). Extending empirical benchmarks of working memory to children. <em>Developmental Psychology</em>.</p>
+                    <a href="https://doi.org/10.1037/dev0001992" target="_blank">View Publication →</a>
+                </div>
+
+                <div class="project-item">
+                    <strong>Cross-Sectional & Longitudinal Analysis</strong>
+                    <p>Examining working memory development patterns across age groups and tracking individual children's growth over time using large-scale adaptive learning data.</p>
+                </div>
+
+                <h3>Clock Reading Development</h3>
+                <div class="project-item">
+                    <strong>Complex Skill Acquisition</strong>
+                    <p>Investigating how children learn to tell time—a cognitively demanding task involving time perception, language, math, and memory—and how this relates to other cognitive domains.</p>
+                    <p>Presented at Psychonomic Society 2024 Annual Meeting, NYC</p>
+                </div>
+
+                <h3>Working Memory × Math Interaction</h3>
+                <div class="project-item">
+                    <strong>Domain Interactions</strong>
+                    <p>Exploring how working memory capacity relates to and supports mathematical learning in primary school children.</p>
+                </div>
+            `,
+            bayesian: `
+                <h2>Bayesian Methods</h2>
+                <p><strong>Computational Modeling of Cognitive Processes</strong></p>
+                <p>I use Bayesian statistical approaches to build computational models of cognition, allowing me to formalize theories and make quantitative predictions about behavior and development.</p>
+                
+                <h3>Core Methodological Skills</h3>
+                <div class="project-item">
+                    <strong>Hierarchical Bayesian Modeling</strong>
+                    <p>Building models that capture both individual differences and group-level developmental patterns, essential for understanding cognitive development across diverse learners.</p>
+                </div>
+
+                <div class="project-item">
+                    <strong>Model Comparison & Selection</strong>
+                    <p>Using Bayesian model comparison to test competing theories of cognitive development and determine which models best explain children's learning patterns.</p>
+                </div>
+
+                <div class="project-item">
+                    <strong>Large-Scale Inference</strong>
+                    <p>Developing scalable Bayesian analysis pipelines for educational datasets with millions of observations from thousands of children.</p>
+                </div>
+
+                <h3>Teaching</h3>
+                <p>I teach <strong>Programming in Psychological Science</strong> and supervise Bachelor's projects, helping students develop computational and statistical skills for psychological research.</p>
+            `,
+            adaptive: `
+                <h2>Adaptive Learning Data</h2>
+                <p><strong>Large-Scale Educational Data from Real Classrooms</strong></p>
+                <p>My research leverages data from Prowise Learn, an adaptive online learning platform used across Dutch primary schools. This provides unprecedented access to study cognitive development in authentic educational settings.</p>
+                
+                <h3>Data Infrastructure</h3>
+                <div class="project-item">
+                    <strong>Prowise Learn Platform</strong>
+                    <p>Access to millions of responses from thousands of children engaging with adaptive educational games. This rich behavioral data captures learning and cognitive processes as they naturally occur in classrooms.</p>
+                </div>
+
+                <div class="project-item">
+                    <strong>Ecological Validity</strong>
+                    <p>Unlike controlled laboratory experiments, this data reflects how children actually learn and perform in real-world educational contexts, providing crucial insights into authentic cognitive development.</p>
+                </div>
+
+                <h3>Research Applications</h3>
+                <div class="project-item">
+                    <strong>Working Memory Assessment at Scale</strong>
+                    <p>Analyzing serial recall tasks across thousands of children to map developmental trajectories and individual differences in working memory capacity.</p>
+                </div>
+
+                <div class="project-item">
+                    <strong>Adaptive Learning Systems</strong>
+                    <p>Understanding how cognitive skills can inform and improve adaptive educational technologies that respond to individual learner needs.</p>
+                </div>
+
+                <h3>Labs & Collaborations</h3>
+                <p>Affiliated with the <strong>EdAptiv Lab</strong> and <strong>Amsterdam Mathematical Psychology Lab (AMPL)</strong> within the Psychological Methods Group at University of Amsterdam.</p>
+            `,
+            psych: `
+                <h2>Psychology & Linguistics</h2>
+                <p><strong>Spatial Semantics & Eye Tracking</strong></p>
+                <p>My work in psycholinguistics explores how spatial language is processed and understood, using eye-tracking methodology to examine the cognitive mechanisms underlying spatial term comprehension in Turkish.</p>
+                
+                <h3>Publications</h3>
+                <div class="publication-item">
+                    <strong>Spatial Term Variety Reflected in Eye Movements on Visual Scenes</strong>
+                    <p>Acarturk, C., & Ertekin, S. (2024). <em>Proceedings of the Annual Meeting of the Cognitive Science Society, 46</em>.</p>
+                    <a href="https://escholarship.org/uc/item/71v0m351" target="_blank">View Publication →</a>
+                </div>
+
+                <h3>Master's Thesis</h3>
+                <div class="publication-item">
+                    <strong>An investigation of Turkish static spatial semantics in terms of lexical variety</strong>
+                    <p>Ertekin, Ş. N. (2021). Master's thesis, Middle East Technical University.</p>
+                    <p>Eye-tracking study examining how lexical diversity in spatial terms affects visual attention and comprehension.</p>
+                </div>
+
+                <h3>Presentations</h3>
+                <div class="publication-item">
+                    <strong>Turkish Spatial Language Semantics</strong>
+                    <p>Experimental-Cognitive Psychology Symposium, Ankara (2021)</p>
+                </div>
+            `,
+            ecog: `
+                <h2>Neuroscience & Neural Networks</h2>
+                <p><strong>Bridging Brain Signals and Computational Models</strong></p>
+                <p>My work in neuroscience combines electrocorticography (ECoG) recordings with deep learning approaches to understand and decode cognitive and motor processes from neural signals.</p>
+                
+                <h3>ECoG & Working Memory</h3>
+                <div class="project-item">
+                    <strong>Frontoparietal Network Dynamics</strong>
+                    <p>Analyzing ECoG recordings to understand how the frontoparietal network supports working memory processes, and developing methods to decode working memory states from neural activity.</p>
+                </div>
+
+                <h3>Neural Networks & Motor Decoding</h3>
+                <div class="project-item">
+                    <strong>Deep Learning for Motor Activity Prediction</strong>
+                    <p>Developed neural network models to decode motor activity from ECoG signals, exploring how deep learning approaches can be applied to neural data analysis and brain-computer interface applications.</p>
+                </div>
+
+                <div class="project-item">
+                    <strong>Signal Processing & Feature Extraction</strong>
+                    <p>Designed preprocessing pipelines for neural data and explored various feature extraction methods to optimize decoding performance.</p>
+                </div>
+
+                <h3>Presentations</h3>
+                <div class="publication-item">
+                    <strong>Investigating Neural Signatures of Working Memory in Frontoparietal Electrocorticography</strong>
+                    <p>Yilmaz, F., Amrani El Yaakoubi, N., Ertekin, Ş. N., Kotoyants, N., Wodeyar, A., & Keogh, C. (2022). FENS Forum, Paris.</p>
+                </div>
+            `,
+            experimental: `
+                <h2>Experimental Cognition</h2>
+                <p><strong>Working Memory Mechanisms & Rapid Forgetting</strong></p>
+                <p>I'm currently involved in a collaborative research project examining the mechanisms underlying rapid forgetting in working memory, particularly in the attribute amnesia paradigm.</p>
+                
+                <h3>Current Collaboration</h3>
+                <div class="project-item">
+                    <strong>Rapid Forgetting & Response Preparation</strong>
+                    <p>This project investigates whether rapid forgetting occurs because individuals prepare an anticipated response, thereby dismissing other information from working memory. We test this by manipulating how people prepare responses in working memory tasks.</p>
+                </div>
+
+                <h3>Research Questions</h3>
+                <div class="project-item">
+                    <strong>Attribute Amnesia Paradigm</strong>
+                    <p>Examining why recently attended information becomes inaccessible so quickly, challenging traditional working memory models that assume attended information remains temporarily accessible.</p>
+                </div>
+
+                <div class="project-item">
+                    <strong>Intention vs. Time</strong>
+                    <p>Testing whether the intention to remember is more important for preserving information than mere elapsed time or the need to process intervening information.</p>
+                </div>
+
+                <h3>Role</h3>
+                <p>Currently gathering experimental data for this collaborative project investigating working memory mechanisms in adults.</p>
+            `,
+            neuro: `
+                <h2>Neuroscience & Neural Networks</h2>
+                <p><strong>Bridging Brain Signals and Computational Models</strong></p>
+                <p>My work in neuroscience combines electrocorticography (ECoG) recordings with deep learning approaches to understand and decode cognitive and motor processes from neural signals.</p>
+                
+                <h3>ECoG & Working Memory</h3>
+                <div class="project-item">
+                    <strong>Frontoparietal Network Dynamics</strong>
+                    <p>Analyzing ECoG recordings to understand how the frontoparietal network supports working memory processes, and developing methods to decode working memory states from neural activity.</p>
+                </div>
+
+                <h3>Neural Networks & Motor Decoding</h3>
+                <div class="project-item">
+                    <strong>Deep Learning for Motor Activity Prediction</strong>
+                    <p>Developed neural network models to decode motor activity from ECoG signals, exploring how deep learning approaches can be applied to neural data analysis and brain-computer interface applications.</p>
+                </div>
+
+                <div class="project-item">
+                    <strong>Signal Processing & Feature Extraction</strong>
+                    <p>Designed preprocessing pipelines for neural data and explored various feature extraction methods to optimize decoding performance.</p>
+                </div>
+
+                <h3>Presentations</h3>
+                <div class="publication-item">
+                    <strong>Investigating Neural Signatures of Working Memory in Frontoparietal Electrocorticography</strong>
+                    <p>Yilmaz, F., Amrani El Yaakoubi, N., Ertekin, Ş. N., Kotoyants, N., Wodeyar, A., & Keogh, C. (2022). FENS Forum, Paris.</p>
+                </div>
+            `,
+            collab: `
+                <h2>Other Projects & Collaborations</h2>
+                <p><strong>Additional Research Experience</strong></p>
+                <p>Beyond my main PhD work, I've been involved in various collaborative projects and side research that have enriched my methodological toolkit and broadened my research perspective.</p>
+                
+                <h3>Research Collaborations</h3>
+                <div class="project-item">
+                    <strong>Data Collection & Analysis Support</strong>
+                    <p>Contributing to collaborative projects in experimental psychology and cognitive science, providing data collection, analysis support, and methodological expertise.</p>
+                </div>
+
+                <div class="project-item">
+                    <strong>Interdisciplinary Projects</strong>
+                    <p>Working across psychology, neuroscience, and computational modeling to address research questions from multiple perspectives.</p>
+                </div>
+            `,
+            methods: `
+                <h2>Bayesian Methods & Statistical Modeling</h2>
+                <p><strong>Computational Approaches to Cognition</strong></p>
+                <p>Throughout my research, I employ Bayesian computational modeling to formalize cognitive theories and make quantitative predictions about behavior. This methodological approach bridges my work across different domains.</p>
+                
+                <h3>Methodological Expertise</h3>
+                <div class="project-item">
+                    <strong>Hierarchical Bayesian Modeling</strong>
+                    <p>Building models that account for individual differences while capturing group-level patterns in cognitive development.</p>
+                </div>
+
+                <div class="project-item">
+                    <strong>Large-Scale Data Analysis</strong>
+                    <p>Developing scalable analysis pipelines for educational data containing millions of student responses.</p>
+                </div>
+
+                <div class="project-item">
+                    <strong>Model Comparison & Selection</strong>
+                    <p>Using Bayesian model comparison to test competing theories of cognitive development and learning.</p>
+                </div>
+
+                <h3>Teaching</h3>
+                <p>I teach <strong>Programming in Psychological Science</strong> and supervise Bachelor's projects, helping students develop computational and statistical skills for psychological research.</p>
+            `,
+            adaptive: `
+                <h2>Adaptive Learning Data</h2>
+                <p><strong>Large-Scale Online Educational Data</strong></p>
+                <p>My PhD research leverages data from Prowise Learn, an adaptive online learning platform used across Dutch primary schools. This provides a unique opportunity to study cognitive development in real-world educational contexts with thousands of children.</p>
+                
+                <h3>Data Sources</h3>
+                <div class="project-item">
+                    <strong>Prowise Learn Platform</strong>
+                    <p>Access to millions of responses from children engaging with adaptive educational games, providing rich behavioral data on learning and cognitive development.</p>
+                </div>
+
+                <div class="project-item">
+                    <strong>Ecological Validity</strong>
+                    <p>Unlike laboratory studies, this data captures how children learn and perform in natural educational settings, offering insights into real-world cognitive processes.</p>
+                </div>
+
+                <h3>Applications</h3>
+                <div class="project-item">
+                    <strong>Working Memory Assessment</strong>
+                    <p>Analyzing serial recall task performance across thousands of children to understand developmental trajectories and individual differences.</p>
+                </div>
+
+                <div class="project-item">
+                    <strong>Clock Reading Development</strong>
+                    <p>Studying how children learn complex cognitive skills through interactions with adaptive learning systems.</p>
+                </div>
+            `
+        };
+
+        function openPanel(type) {
+            const panel = document.getElementById('panel');
+            const overlay = document.querySelector('.overlay');
+            const content = document.getElementById('panel-content');
+            
+            content.innerHTML = panelContent[type];
+            panel.classList.add('active');
+            overlay.classList.add('active');
+            
+            // Highlight the clicked circle
+            document.querySelectorAll('.research-circle').forEach(circle => {
+                circle.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+        }
+
+        function closePanel() {
+            const panel = document.getElementById('panel');
+            const overlay = document.querySelector('.overlay');
+            
+            panel.classList.remove('active');
+            overlay.classList.remove('active');
+            
+            document.querySelectorAll('.research-circle').forEach(circle => {
+                circle.classList.remove('active');
+            });
+        }
+
+        // Add some connection lines between circles on load
+        window.addEventListener('load', () => {
+            const universe = document.querySelector('.research-universe');
+            const circles = document.querySelectorAll('.research-circle');
+            
+            // This could be expanded to draw actual connecting lines
+            // For now, the floating animation creates a sense of connection
         });
-        sections.forEach(s => s.classList.remove('active'));
-        tab.classList.add('active');
-        tab.setAttribute('aria-selected', 'true');
-        document.getElementById(tab.getAttribute('aria-controls')).classList.add('active');
-      });
-    });
-  </script>
+
+        // Close panel on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closePanel();
+            }
+        });
+    </script>
 </body>
 </html>
