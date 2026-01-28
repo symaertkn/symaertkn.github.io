@@ -163,8 +163,8 @@
         .research-universe {
             position: relative;
             width: 100%;
-            max-width: 1000px;
-            height: 750px;
+            max-width: 900px;
+            aspect-ratio: 1;
             margin: 0 auto;
             animation: fadeIn 1s ease-out 0.4s both;
         }
@@ -177,8 +177,8 @@
         /* Big question circle */
         .big-question-circle {
             position: absolute;
-            width: 720px;
-            height: 720px;
+            width: 80%;
+            height: 80%;
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
@@ -194,12 +194,13 @@
             left: 50%;
             transform: translateX(-50%);
             font-family: 'Crimson Pro', serif;
-            font-size: 1.5rem;
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
             font-weight: 600;
             color: #475569;
             text-align: center;
             pointer-events: none;
             line-height: 1.3;
+            white-space: nowrap;
         }
 
         /* Core PhD component circles - each with different color */
@@ -217,6 +218,8 @@
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
             pointer-events: all;
             opacity: 0.85;
+            width: 28%;
+            height: 28%;
         }
 
         .core-circle:hover {
@@ -228,8 +231,6 @@
 
         /* Adaptive Data - left - Soft Blue */
         #adaptive-data {
-            width: 210px;
-            height: 210px;
             left: 25%;
             top: 50%;
             transform: translateY(-50%);
@@ -243,8 +244,6 @@
 
         /* Bayesian Methods - right - Soft Rose */
         #bayesian {
-            width: 210px;
-            height: 210px;
             right: 25%;
             top: 50%;
             transform: translateY(-50%);
@@ -258,8 +257,6 @@
 
         /* Cognitive Development - top - Soft Mint */
         #cognitive-dev {
-            width: 210px;
-            height: 210px;
             left: 50%;
             top: 23%;
             transform: translateX(-50%);
@@ -285,8 +282,8 @@
             border: 2px solid var(--secondary);
             box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
             pointer-events: all;
-            width: 110px;
-            height: 110px;
+            width: 14%;
+            height: 14%;
         }
 
         .support-circle:hover {
@@ -296,27 +293,27 @@
         }
 
         .support-circle .circle-label {
-            font-size: 0.8rem;
+            font-size: clamp(0.6rem, 1.5vw, 0.8rem);
             color: var(--secondary);
             position: static;
             transform: none;
         }
 
-        /* Position small circles at bottom - aligned with outer circle outline */
+        /* Position small circles at bottom - inside the outer circle */
         #psych-ling {
-            left: 18%;
-            bottom: 15%;
+            left: 22%;
+            bottom: 18%;
         }
 
         #neuro {
             left: 50%;
             transform: translateX(-50%);
-            bottom: 6%;
+            bottom: 12%;
         }
 
         #exp-cognition {
-            right: 18%;
-            bottom: 15%;
+            right: 22%;
+            bottom: 18%;
         }
 
         /* PhD center label - just text at intersection */
@@ -338,7 +335,7 @@
 
         .phd-center-label {
             font-family: 'Crimson Pro', serif;
-            font-size: 1.3rem;
+            font-size: clamp(1rem, 2.2vw, 1.3rem);
             font-weight: 700;
             pointer-events: none;
             line-height: 1.2;
@@ -376,9 +373,9 @@
         .circle-label {
             font-family: 'Crimson Pro', serif;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: clamp(0.75rem, 1.8vw, 1rem);
             text-align: center;
-            padding: 0 1rem;
+            padding: 0 0.5rem;
             pointer-events: none;
             color: var(--primary);
             position: absolute;
@@ -528,67 +525,24 @@
         }
 
         @media (max-width: 768px) {
-            .research-universe {
-                height: 720px;
+            .hero {
+                min-height: auto;
+                padding: 5rem 1rem 2rem;
             }
 
-            .big-question-circle {
-                width: 550px;
-                height: 550px;
+            .hero-content {
+                margin-bottom: 2rem;
             }
 
-            .big-question-label {
-                font-size: 1.3rem;
-                top: 4%;
+            h1 {
+                font-size: 2rem;
             }
 
-            .core-circle {
-                width: 170px;
-                height: 170px;
+            .tagline {
+                font-size: 1rem;
             }
 
-            #adaptive-data {
-                left: 24%;
-            }
-
-            #bayesian {
-                right: 24%;
-            }
-
-            #cognitive-dev {
-                top: 25%;
-            }
-
-            .phd-center-label {
-                font-size: 1.1rem;
-            }
-
-            .support-circle {
-                width: 85px;
-                height: 85px;
-            }
-
-            .support-circle .circle-label {
-                font-size: 0.65rem;
-            }
-
-            #psych-ling {
-                left: 15%;
-                bottom: 12%;
-            }
-
-            #neuro {
-                left: 50%;
-                transform: translateX(-50%);
-                bottom: 5%;
-            }
-
-            #exp-cognition {
-                right: 15%;
-                bottom: 12%;
-            }
-
-            .circle-label {
+            .vision-statement {
                 font-size: 0.9rem;
             }
 
@@ -597,7 +551,8 @@
             }
 
             nav ul {
-                gap: 1rem;
+                gap: 0.8rem;
+                font-size: 0.85rem;
             }
         }
 
