@@ -17,17 +17,17 @@
         }
 
         :root {
-            --primary: #2d5a7b;
-            --secondary: #c67b5c;
-            --accent: #e8b4a8;
-            --dark: #1a2332;
-            --light: #f5f1ed;
-            --text: #3a3a3a;
+            --primary: #8b5a3c;
+            --secondary: #d4896f;
+            --accent: #e6b89c;
+            --dark: #3d2817;
+            --light: #faf6f1;
+            --text: #4a3428;
         }
 
         body {
             font-family: 'DM Sans', sans-serif;
-            background: linear-gradient(135deg, #f5f1ed 0%, #e8dfd6 100%);
+            background: linear-gradient(135deg, #fdf8f3 0%, #f5ebe0 100%);
             color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
@@ -697,7 +697,7 @@
     <div class="hero" id="home">
         <div class="hero-content">
             <h1>Şeyma Nur Ertekin</h1>
-            <div class="tagline">PhD Candidate in Psychological Methods</div>
+            <div class="tagline">PhD Candidate in Psychological Methods<br>University of Amsterdam</div>
             <p class="vision-statement">
                 I bridge cognitive development, neuroscience, and computational modeling to understand how children learn and think. 
                 My work spans from neural signals to adaptive learning systems, unified by a vision of making education more responsive 
@@ -726,7 +726,7 @@
 
             <!-- PhD center - just text at the intersection -->
             <div class="phd-center" onclick="openPanel('phd')">
-                <div class="phd-center-label">PhD<br>Focus</div>
+                <div class="phd-center-label">PhD<br>Projects</div>
             </div>
 
             <!-- Small supporting circles - previous and non-PhD projects -->
@@ -794,6 +794,14 @@
         </p>
         <p>
             Ertekin, Ş. N. (2021). <i>An investigation of Turkish static spatial semantics in terms of lexical variety: an eye tracking study</i> (Master's thesis, Middle East Technical University).
+        </p>
+
+        <h4>Preprints</h4>
+        <p>
+            Ertekin, Ş. N., Ye, L., van der Maas, H., Haaf, J. M., & Hofman, A. D. (2024). 
+            <i>Beat the Clock: Clock Reading Ability of Children in an Adaptive Learning Environment</i>. 
+            <strong>PsyArXiv</strong>. 
+            <a href="https://osf.io/preprints/psyarxiv/y5ad4_v1" target="_blank">https://osf.io/preprints/psyarxiv/y5ad4_v1</a>
         </p>
 
         <h4>Posters</h4>
@@ -875,31 +883,33 @@
     <script>
         const panelContent = {
             phd: `
-                <h2>My PhD Research</h2>
+                <h2>PhD Projects</h2>
                 <p><strong>Using Adaptive Learning Data and Bayesian Methods to Study Cognitive Development</strong></p>
                 <p>My doctoral research combines large-scale adaptive learning data with Bayesian computational modeling to understand how children's cognitive skills develop. The thesis consists of four interconnected projects:</p>
                 
-                <h3>Project 1: Working Memory Benchmarks (Published)</h3>
-                <div class="publication-item">
-                    <strong>Extending empirical benchmarks of working memory to children: Insights from an adaptive learning environment</strong>
-                    <p>Ertekin, Ş. N., Hofman, A. D., van der Maas, H., Matzke, D., Streitberger, C., & Haaf, J. M. (2025). <em>Developmental Psychology</em>.</p>
+                <h3>Project 1: Working Memory Benchmarks</h3>
+                <div class="project-item">
+                    <strong>Extending empirical benchmarks of working memory to children</strong>
+                    <p>Establishing empirical benchmarks for working memory in children using data from an adaptive learning platform, extending classic WM findings to developmental populations.</p>
                     <a href="https://doi.org/10.1037/dev0001992" target="_blank">View Publication →</a>
-                    <p style="margin-top: 0.5rem;">This paper establishes empirical benchmarks for working memory in children using data from an adaptive learning platform, extending classic WM findings to developmental populations.</p>
+                    <p style="margin-top: 0.5rem;"><em>Posters:</em></p>
+                    <p>• <a href="https://mathpsych.org/presentation/1684" target="_blank">MathPsych 2023</a> - Extending Working Memory Benchmarks to Children Using a Large-Scale Online Adaptive Learning Environment</p>
+                    <p>• ICWM 2024, Leeds - Playing with Memory: Benchmarks in Children's Working Memory within a Large-Scale Online Learning Environment</p>
                 </div>
 
                 <h3>Project 2: Clock Reading Development</h3>
                 <div class="project-item">
                     <strong>How children learn to tell time and its cognitive correlates</strong>
                     <p>Examining clock reading as a complex cognitive skill that draws on time perception, language, math, and memory. This project explores developmental patterns and how clock reading relates to other cognitive domains.</p>
-                    <p><em>Poster presented at Psychonomic Society 2024, NYC</em></p>
+                    <a href="https://osf.io/preprints/psyarxiv/y5ad4_v1" target="_blank">View Preprint →</a>
+                    <p style="margin-top: 0.5rem;"><em>Poster presented at Psychonomic Society 2024, NYC</em></p>
                 </div>
 
                 <h3>Project 3: Working Memory Development (Cross-Sectional & Longitudinal)</h3>
                 <div class="project-item">
-                    <strong>Developmental trajectories of working memory in primary school</strong>
+                    <strong>Spatial Working Memory Development of Primary School Children in an Online Adaptive Learning Environment</strong>
                     <p>Analyzing both cross-sectional patterns across age groups and longitudinal growth trajectories of individual children using large-scale adaptive learning data. This project maps how working memory capacity develops and varies across childhood.</p>
-                    <p><em>Posters at ICWM 2024 (Leeds) and MathPsych 2023</em></p>
-                    <a href="https://mathpsych.org/presentation/1684" target="_blank">View Poster →</a>
+                    <p><em>Talk at TEAP 2026 Symposium: "Working Memory Development Across Childhood: Behavioral, Cognitive, and Educational Insights"</em></p>
                 </div>
 
                 <h3>Project 4: Working Memory × Math Domains</h3>
@@ -908,37 +918,30 @@
                     <p>Investigating how working memory capacity relates to and supports learning across different mathematical domains in primary school children, using adaptive learning data to understand these cognitive interactions.</p>
                 </div>
 
+                <h3>Supervisors</h3>
+                <p><strong>Prof. Dr. Julia Haaf</strong> - University of Potsdam</p>
+                <p><strong>Dr. Abe Hofman</strong> - University of Amsterdam</p>
+                <p><strong>Prof. Dr. Han van der Maas</strong> - University of Amsterdam</p>
+                <p><strong>Dr. Dora Matzke</strong> - University of Amsterdam</p>
+
                 <h3>Labs & Affiliation</h3>
-                <p>This work is conducted at the University of Amsterdam within the <strong>Psychological Methods Group</strong>, affiliated with both the <strong>EdAptiv Lab</strong> (adaptive learning research) and the <strong>Amsterdam Mathematical Psychology Lab (AMPL)</strong> (computational modeling).</p>
+                <p>This work is conducted at the University of Amsterdam within the <strong>Psychological Methods Group</strong>, affiliated with both the <strong>EdAptiv Lab</strong> and the <strong>Amsterdam Mathematical Psychology Lab (AMPL)</strong>.</p>
             `,
             cognitive: `
-                <h2>Cognitive Development</h2>
-                <p><strong>Understanding How Children Learn and Think</strong></p>
-                <p>My PhD focuses on cognitive development in childhood, particularly working memory and its role in learning. I study how cognitive skills develop and interact with each other in real educational contexts.</p>
+                <h2>Cognition</h2>
+                <p><strong>Understanding Cognitive Development in Children</strong></p>
+                <p>My research focuses on how cognitive abilities develop during childhood, with particular emphasis on working memory and complex skill acquisition like clock reading.</p>
                 
                 <h3>Working Memory Development</h3>
                 <div class="project-item">
-                    <strong>Published Paper: Empirical Benchmarks</strong>
-                    <p>Ertekin, Ş. N., Hofman, A. D., van der Maas, H., Matzke, D., Streitberger, C., & Haaf, J. M. (2025). Extending empirical benchmarks of working memory to children. <em>Developmental Psychology</em>.</p>
-                    <a href="https://doi.org/10.1037/dev0001992" target="_blank">View Publication →</a>
+                    <strong>Developmental Trajectories</strong>
+                    <p>Examining how working memory capacity grows across childhood and how individual differences emerge, using large-scale behavioral data from thousands of children.</p>
                 </div>
 
+                <h3>Clock Reading as Cognitive Skill</h3>
                 <div class="project-item">
-                    <strong>Cross-Sectional & Longitudinal Analysis</strong>
-                    <p>Examining working memory development patterns across age groups and tracking individual children's growth over time using large-scale adaptive learning data.</p>
-                </div>
-
-                <h3>Clock Reading Development</h3>
-                <div class="project-item">
-                    <strong>Complex Skill Acquisition</strong>
-                    <p>Investigating how children learn to tell time—a cognitively demanding task involving time perception, language, math, and memory—and how this relates to other cognitive domains.</p>
-                    <p>Presented at Psychonomic Society 2024 Annual Meeting, NYC</p>
-                </div>
-
-                <h3>Working Memory × Math Interaction</h3>
-                <div class="project-item">
-                    <strong>Domain Interactions</strong>
-                    <p>Exploring how working memory capacity relates to and supports mathematical learning in primary school children.</p>
+                    <strong>Multimodal Cognition</strong>
+                    <p>Clock reading draws on multiple cognitive domains including time perception, numerical cognition, spatial reasoning, and language. This makes it an ideal window into how children integrate different cognitive skills.</p>
                 </div>
             `,
             bayesian: `
@@ -968,32 +971,27 @@
             adaptive: `
                 <h2>Adaptive Learning Data</h2>
                 <p><strong>Large-Scale Educational Data from Real Classrooms</strong></p>
-                <p>My research leverages data from Prowise Learn, an adaptive online learning platform used across Dutch primary schools. This provides unprecedented access to study cognitive development in authentic educational settings.</p>
+                <p>My research leverages data from <a href="http://prowise.com/en/product/prowise-learn/" target="_blank">Prowise Learn</a>, a Dutch adaptive online learning platform focusing on K–12 education where children practice mathematical and language skills through various games.</p>
                 
-                <h3>Data Infrastructure</h3>
+                <h3>Large-Scale Online Data</h3>
                 <div class="project-item">
-                    <strong>Prowise Learn Platform</strong>
-                    <p>Access to millions of responses from thousands of children engaging with adaptive educational games. This rich behavioral data captures learning and cognitive processes as they naturally occur in classrooms.</p>
+                    <strong>Millions of Responses from Thousands of Children</strong>
+                    <p>Access to behavioral data from thousands of Dutch primary school children engaging with adaptive educational games. This massive dataset provides millions of individual responses, allowing us to study cognitive development patterns that would be impossible to observe in traditional research settings.</p>
+                    <p><em>Experience it yourself: <a href="https://app.rekentuin.nl/demo" target="_blank">Request a free demo account</a></em></p>
                 </div>
 
+                <h3>Real-Time Adaptive Algorithm</h3>
                 <div class="project-item">
-                    <strong>Ecological Validity</strong>
-                    <p>Unlike controlled laboratory experiments, this data reflects how children actually learn and perform in real-world educational contexts, providing crucial insights into authentic cognitive development.</p>
+                    <strong>Elo-Based Continuous Adaptation</strong>
+                    <p>Every game adapts in real-time to each child's ability using an Elo-based estimation algorithm. After every single response, both the child's ability rating and the item's difficulty rating update based on performance (accuracy + response time). This continuous adaptation allows us to track how children's abilities develop over time.</p>
+                    <p>Each session consists of 10 items with immediate feedback. Children can choose difficulty levels (easy, medium, hard) relative to their current ability, targeting 90%, 75%, or 60% accuracy respectively.</p>
                 </div>
 
-                <h3>Research Applications</h3>
+                <h3>Research Value</h3>
                 <div class="project-item">
-                    <strong>Working Memory Assessment at Scale</strong>
-                    <p>Analyzing serial recall tasks across thousands of children to map developmental trajectories and individual differences in working memory capacity.</p>
+                    <strong>Ecological Validity at Scale</strong>
+                    <p>This data captures how children naturally learn and perform in their everyday educational environment, providing insights into authentic cognitive development in real classroom settings across an entire country's primary school population.</p>
                 </div>
-
-                <div class="project-item">
-                    <strong>Adaptive Learning Systems</strong>
-                    <p>Understanding how cognitive skills can inform and improve adaptive educational technologies that respond to individual learner needs.</p>
-                </div>
-
-                <h3>Labs & Collaborations</h3>
-                <p>Affiliated with the <strong>EdAptiv Lab</strong> and <strong>Amsterdam Mathematical Psychology Lab (AMPL)</strong> within the Psychological Methods Group at University of Amsterdam.</p>
             `,
             psych: `
                 <h2>Psycholinguistics & Eye Tracking</h2>
@@ -1076,26 +1074,44 @@
             neuro: `
                 <h2>Neuroscience & AI</h2>
                 <p><strong>Bridging Brain Signals and Computational Models</strong></p>
-                <p>My work in neuroscience combines electrocorticography (ECoG) recordings with deep learning approaches to understand and decode cognitive and motor processes from neural signals.</p>
+                <p>My work in neuroscience combines electrocorticography (ECoG) recordings with deep learning and machine learning approaches to understand and decode cognitive and motor processes from neural signals.</p>
                 
                 <h3>ECoG & Working Memory</h3>
                 <div class="project-item">
+                    <strong>Decoding Working Memory Load</strong>
+                    <p>Decoding three levels of working memory load (0-back, 1-back, 2-back) from ECoG data using regularized logistic regression with different feature selection strategies. Results showed that low-frequency oscillations carried the most discriminative information, and feature selection based on common electrodes across subjects yielded the highest classification accuracies.</p>
+                </div>
+
+                <div class="project-item">
                     <strong>Frontoparietal Network Dynamics</strong>
-                    <p>Analyzing ECoG recordings to understand how the frontoparietal network supports working memory processes, and developing methods to decode working memory states from neural activity.</p>
+                    <p>Analyzing ECoG recordings to understand how the frontoparietal network supports working memory processes and developing methods to decode working memory states from neural activity.</p>
                 </div>
 
                 <h3>Neural Networks & Motor Decoding</h3>
                 <div class="project-item">
-                    <strong>Deep Learning for Motor Activity Prediction</strong>
-                    <p>Developed neural network models to decode motor activity from ECoG signals, exploring how deep learning approaches can be applied to neural data analysis and brain-computer interface applications.</p>
+                    <strong>Transfer Learning: Real to Imagined Motor Actions</strong>
+                    <p>Investigating shared representations between motor imagery and motor execution in ECoG data using convolutional neural networks (CNNs). Cross-classified imagery data using models trained on motor action data, demonstrating potential for BCI applications for people with motor deficits.</p>
+                    <p><em>Coauthors: Gizay Ceylan (EPFL), Funda Yilmaz (Carl Von Ossietzky Universität Oldenburg), Ozgur Ege Aydogan, Okkes Erdem Tekerek</em></p>
                 </div>
 
                 <div class="project-item">
                     <strong>Signal Processing & Feature Extraction</strong>
-                    <p>Designed preprocessing pipelines for neural data and explored various feature extraction methods to optimize decoding performance.</p>
+                    <p>Designed preprocessing pipelines for neural data and explored various feature extraction methods to optimize decoding performance for working memory and motor tasks.</p>
                 </div>
 
                 <h3>Presentations</h3>
+                <div class="publication-item">
+                    <strong>What are the best features to decode the levels of working memory load from ECoG data?</strong>
+                    <p>Yilmaz, F., & Ertekin, Ş. N. (2025). Extended abstract and poster presentation at CCNeuro.</p>
+                    <a href="https://ccneuro.org" target="_blank">CCNeuro Conference</a>
+                </div>
+
+                <div class="publication-item">
+                    <strong>Transfer Learning from Real to Imagined Motor Actions in ECoG Data</strong>
+                    <p>Ertekin, Ş. N., Ceylan, G., Yilmaz, F., Aydogan, O. E., & Tekerek, O. E. (2022). Neuromatch Conference.</p>
+                    <a href="https://www.youtube.com/watch?v=xJmBpAqcgZw" target="_blank">View Presentation →</a>
+                </div>
+
                 <div class="publication-item">
                     <strong>Investigating Neural Signatures of Working Memory in Frontoparietal Electrocorticography</strong>
                     <p>Yilmaz, F., Amrani El Yaakoubi, N., Ertekin, Ş. N., Kotoyants, N., Wodeyar, A., & Keogh, C. (2022). FENS Forum, Paris.</p>
@@ -1140,33 +1156,6 @@
 
                 <h3>Teaching</h3>
                 <p>I teach <strong>Programming in Psychological Science</strong> and supervise Bachelor's projects, helping students develop computational and statistical skills for psychological research.</p>
-            `,
-            adaptive: `
-                <h2>Adaptive Learning Data</h2>
-                <p><strong>Large-Scale Online Educational Data</strong></p>
-                <p>My PhD research leverages data from Prowise Learn, an adaptive online learning platform used across Dutch primary schools. This provides a unique opportunity to study cognitive development in real-world educational contexts with thousands of children.</p>
-                
-                <h3>Data Sources</h3>
-                <div class="project-item">
-                    <strong>Prowise Learn Platform</strong>
-                    <p>Access to millions of responses from children engaging with adaptive educational games, providing rich behavioral data on learning and cognitive development.</p>
-                </div>
-
-                <div class="project-item">
-                    <strong>Ecological Validity</strong>
-                    <p>Unlike laboratory studies, this data captures how children learn and perform in natural educational settings, offering insights into real-world cognitive processes.</p>
-                </div>
-
-                <h3>Applications</h3>
-                <div class="project-item">
-                    <strong>Working Memory Assessment</strong>
-                    <p>Analyzing serial recall task performance across thousands of children to understand developmental trajectories and individual differences.</p>
-                </div>
-
-                <div class="project-item">
-                    <strong>Clock Reading Development</strong>
-                    <p>Studying how children learn complex cognitive skills through interactions with adaptive learning systems.</p>
-                </div>
             `
         };
 
